@@ -9,7 +9,7 @@ def decoratorGetPath(function):
     def wrapper(file_name:str):
         return Path('/tmp', file_name)
     return wrapper
-#@decoratorGetPath
+@decoratorGetPath
 def getPath(file_name:str):
     """Getting the local Path, deactivate decorator for local testing
 
@@ -26,7 +26,7 @@ def decoratorGetHostName(function):
     def wrapper():
         return environ['HOSTNAME']
     return wrapper
-#@decoratorGetHostName
+@decoratorGetHostName
 def getHostName()->str:
     """Returns a string for the FTP Hostname, deactivate decorator for local testing
 
@@ -39,7 +39,7 @@ def decoratorGetUserName(function):
     def wrapper():
         return environ['USERNAME']
     return wrapper
-#@decoratorGetUserName
+@decoratorGetUserName
 def getUserName()->str:
     """Returns a string for the FTP UserName, deactivate decorator for local testing
 
@@ -52,7 +52,7 @@ def decoratorGetPassword(function):
     def wrapper():
         return environ['PASSWORD']
     return wrapper
-#@decoratorGetPassword
+@decoratorGetPassword
 def getPassword()->str:
     """Returns a string for the FTP Password, deactivate decorator for local testing
 
@@ -65,7 +65,7 @@ def decoratorGetDistributionList(function):
     def wrapper():
         return environ.get('TOLIST')
     return wrapper
-#@decoratorGetDistributionList
+@decoratorGetDistributionList
 def getDistributionList()->str:
     """Returns a string for the SMTP distribution list separated by ;
 
@@ -78,7 +78,7 @@ def decoratorGetSendgridAPIKey(function):
     def wrapper():
         return environ.get('SENDGRID_API_KEY')
     return wrapper
-#@decoratorGetSendgridAPIKey
+@decoratorGetSendgridAPIKey
 def getSendgridAPIKey()->str:
     """Return a string for the Sengrid API KEY
 
