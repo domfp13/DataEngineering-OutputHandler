@@ -9,7 +9,8 @@ import logging, base64
 
 REGISTRY = {
     'UPS_ALLOCATION': send_email,
-    'BMO_Disposition': send_to_ftp
+    'BMO_Disposition': send_to_ftp,
+    'distribution': send_to_ftp
 }
 
 def function_handler(event, context)->None:
@@ -26,12 +27,14 @@ def function_handler(event, context)->None:
         pubsub_message = loads(base64.b64decode(event['data']).decode('utf-8'))
         
         directory_name = basename(dirname(pubsub_message.get('name')))
+        #directory_name = basename(dirname(event['name'])) # Local Testing
         
         if directory_name in REGISTRY.keys():
             
             logging.info(f"Processing {pubsub_message.get('name')}")
             
             REGISTRY[directory_name](pubsub_message.get('bucket'), pubsub_message.get('name'))
+            #REGISTRY[directory_name](event['bucket'], event['name'])
             
             logging.info("End")
             
