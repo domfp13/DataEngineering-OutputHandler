@@ -25,8 +25,11 @@ def function_handler(event, context)->None:
         logging.info("Start")
 
         pubsub_message = loads(base64.b64decode(event['data']).decode('utf-8'))
+
+        logging.info(pubsub_message)
         
         directory_name = basename(dirname(pubsub_message.get('name')))
+        logging.info(directory_name)
         #directory_name = basename(dirname(event['name'])) # Local Testing
         
         if directory_name in REGISTRY.keys():
