@@ -29,6 +29,7 @@ def function_handler(event, context)->None:
         logging.info(pubsub_message)
         
         directory_name = basename(dirname(pubsub_message.get('name')))
+        #directory_name = basename(dirname(dirname(dirname(pubsub_message.get('name')))))
         logging.info(directory_name)
         #directory_name = basename(dirname(event['name'])) # Local Testing
         
